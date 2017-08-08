@@ -1,7 +1,9 @@
 FROM dala00/chromium-xvfb-angular-cli
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Set debian non interactive mode
-RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && export DEBIAN_FRONTEND="noninteractive" && \
     # Install WGET
     apt-get update && apt-get install -y wget && \
     # Install Google chrome
